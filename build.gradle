@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+defaultTasks 'clean', 'test'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'com.codeborne:selenide:7.0.1'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties = [
+            'file.encoding': 'UTF-8',
+            'selenide.browser': 'chrome'
+    ]
+    testLogging.showStandardStreams = true
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        //exceptionFormat "full"
+    }
+}
+
+[compileJava, compileTestJava]*.options.collect {options -> options.encoding = 'UTF-8'}
+[compileJava, compileTestJava]*.options.collect {options -> options.debug = true}
+[compileJava, compileTestJava]*.sourceCompatibility = 17
+[compileJava, compileTestJava]*.targetCompatibility = 17
