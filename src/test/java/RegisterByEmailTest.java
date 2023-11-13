@@ -6,7 +6,8 @@ public class RegisterByEmailTest extends BaseTest {
     private final static String GENDER = "M";
     private final static String FIRSTNAME = "FirstName";
     private final static String LASTNAME = "LastName";
-    private final static String EMAIL = "test1122322@example.com";
+    //TODO прикрутить рандомизатор email
+    private final static String EMAIL = "test11223221@example.com";
     private final static String PASSWORD = "123456";
 
     @Test

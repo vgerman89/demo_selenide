@@ -33,11 +33,11 @@ public class RegisterPage {
         if (genderType.equals("F")){
             genderFemaleCheckbox.selectRadio(genderType);
         }
-        firstNameInput.type(firstName);
-        lastNameInput.type(lastName);
-        emailInput.type(email);
-        passwordInput.type(password);
-        confirmPasswordInput.type(confirmPassword);
+        firstNameInput.setValue(firstName);
+        lastNameInput.setValue(lastName);
+        emailInput.setValue(email);
+        passwordInput.setValue(password);
+        confirmPasswordInput.setValue(confirmPassword);
         registerButton.click();
         registrationCompletedText.should(appear);
         continueButton.should(appear);
