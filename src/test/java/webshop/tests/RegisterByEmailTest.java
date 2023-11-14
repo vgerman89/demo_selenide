@@ -1,6 +1,7 @@
 package webshop.tests;
 
 import org.junit.jupiter.api.Test;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class RegisterByEmailTest extends BaseTest {
 
@@ -8,8 +9,7 @@ public class RegisterByEmailTest extends BaseTest {
     private final static String GENDER = "M";
     private final static String FIRSTNAME = "FirstName";
     private final static String LASTNAME = "LastName";
-    //TODO прикрутить рандомизатор email
-    private final static String EMAIL = "test1122322221112@example.com";
+    private final static String EMAIL = "mail"+RandomStringUtils.randomNumeric(3) + "@example.com";
     private final static String PASSWORD = "123456";
 
     @Test
