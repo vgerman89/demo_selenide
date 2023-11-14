@@ -1,11 +1,18 @@
+package webshop.appmanager;
+
 import com.codeborne.selenide.SelenideElement;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selenide.$;
 
-public class RegisterPage {
+public class RegisterPage extends HelperBase {
+
+    public RegisterPage(WebDriverManager wdm){
+        super (wdm);
+    }
 
     private final SelenideElement registerHeader =$(By.xpath("//h1[text()='Register']"));
     private final SelenideElement genderMaleCheckbox = $("input#gender-male");
@@ -24,7 +31,7 @@ public class RegisterPage {
         return $(By.xpath("//a[@href='/customer/info'][text()='"+accountName+"']"));
     }
 
-    public void registerNewUser(String genderType, String firstName, String lastName, String email, String password, String confirmPassword){
+    public RegisterPage registerNewUser(String genderType, String firstName, String lastName, String email, String password, String confirmPassword){
 
         registerHeader.should(appear);
         if (genderType.equals("M")){
@@ -42,6 +49,7 @@ public class RegisterPage {
         registrationCompletedText.should(appear);
         continueButton.should(appear);
         headerAccountLinkConstructor(email).should(appear);
+        return new RegisterPage(wdm);
     }
 
     public void clickOnContinueAfterRegister(){
