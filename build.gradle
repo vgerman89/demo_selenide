@@ -1,4 +1,10 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.11.2"
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
 
 defaultTasks 'clean', 'test'
 
@@ -6,10 +12,25 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    junitVersion = '5.8.1'
+    allureVersion = '2.24.0'
+}
+
 dependencies {
-    testImplementation 'com.codeborne:selenide:7.0.1'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation("com.codeborne:selenide:7.0.1")
+    testImplementation("io.github.bonigarcia:webdrivermanager:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.10.1")
+    testImplementation("com.typesafe:config:1.4.3")
+    testImplementation("org.aspectj:aspectjweaver:1.9.20.1")
+    testImplementation("io.qameta.allure:allure-junit5:${allureVersion}")
+    testImplementation("io.qameta.allure:allure-commandline:${allureVersion}")
+    testImplementation("io.qameta.allure:allure-assertj:${allureVersion}")
+    testImplementation("io.qameta.allure:allure-java-commons:${allureVersion}")
+    testImplementation("io.qameta.allure:allure-selenide:${allureVersion}")
 }
 
 test {
@@ -20,7 +41,7 @@ test {
     ]
     testLogging.showStandardStreams = true
     testLogging {
-        events "passed", "skipped", "failed", "standardOut", "standardError"
+        events "passed", "skipped", "failed"//, "standardOut", "standardError"
         //exceptionFormat "full"
     }
 }
