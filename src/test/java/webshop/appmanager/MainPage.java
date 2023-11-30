@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static webshop.appmanager.ConfigProvider.config;
 
 public class MainPage extends HelperBase {
 
@@ -15,8 +16,10 @@ public class MainPage extends HelperBase {
 
     private final SelenideElement registerLink = $("a.ico-register");
 
-    public MainPage openMainPage(String url){
-        open(url);
+    private final String base_url = config.getString("app_url");
+
+    public MainPage openMainPage(){
+        open(base_url);
         return new MainPage(wdm);
     }
 

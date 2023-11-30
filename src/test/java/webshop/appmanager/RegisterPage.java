@@ -27,7 +27,7 @@ public class RegisterPage extends HelperBase {
             "            Your registration completed\n" +
             "        ']"));
     private final SelenideElement continueButton = $("input.button-1.register-continue-button");
-    private final SelenideElement headerAccountLinkConstructor(String accountName){
+    private SelenideElement headerAccountLinkConstructor(String accountName){
         return $(By.xpath("//a[@href='/customer/info'][text()='"+accountName+"']"));
     }
 
