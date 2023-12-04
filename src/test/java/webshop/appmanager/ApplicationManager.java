@@ -10,8 +10,9 @@ import org.openqa.selenium.remote.Browser;
 public class ApplicationManager {
     WebDriverManager wdm;
 
-    public MainPage mainPage;
-    public RegisterPage registerPage;
+    private MainPage mainPage;
+    private RegisterPage registerPage;
+    private LoginPage loginPage;
     private String browser;
     public ApplicationManager(String browser){
         this.browser = browser;
@@ -30,6 +31,7 @@ public class ApplicationManager {
         //Не уверен что в случае селенида, нужно в хелперы прокидывать вебдрайвер, но пусть будет, для поддержки нативных средств селениума
         mainPage = new MainPage(wdm);
         registerPage = new RegisterPage(wdm);
+        loginPage = new LoginPage(wdm);
     }
 
     public void stop() {
@@ -43,4 +45,5 @@ public class ApplicationManager {
     public RegisterPage registerPage(){
         return registerPage;
     }
+    public LoginPage loginPage() {return loginPage;}
 }

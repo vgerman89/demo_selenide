@@ -6,7 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class RegisterByEmailTest extends BaseTest {
+
+public class HeaderRegistrationTest extends BaseTest {
 
     private final static String GENDER = "M";
     private final static String FIRSTNAME = "FirstName";
@@ -18,11 +19,11 @@ public class RegisterByEmailTest extends BaseTest {
     @DisplayName("Registration positive test")
     @Owner("Vitaliy German")
     @Description("Выполняем тест успешной регистрации")
-    public void authByEmailTest(){
+    public void PositiveRegistrationTest(){
 
-        app.mainPage
+        app.mainPage()
                 .openMainPage()
-                .clickOnRegisterUrl()
+                .clickOnRegisterLink()
                 .registerNewUser(GENDER, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PASSWORD)
                 .clickOnContinueAfterRegister();
     }

@@ -2,6 +2,7 @@ package webshop.appmanager;
 
 import com.codeborne.selenide.SelenideElement;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -14,7 +15,7 @@ public class RegisterPage extends HelperBase {
         super (wdm);
     }
 
-    private final SelenideElement registerHeader =$(By.xpath("//h1[text()='Register']"));
+    private final SelenideElement registerHeader = $(By.xpath("//h1[text()='Register']"));
     private final SelenideElement genderMaleCheckbox = $("input#gender-male");
     private final SelenideElement genderFemaleCheckbox = $("input#gender-female");
     private final SelenideElement firstNameInput = $("input#FirstName");
@@ -31,6 +32,7 @@ public class RegisterPage extends HelperBase {
         return $(By.xpath("//a[@href='/customer/info'][text()='"+accountName+"']"));
     }
 
+    @Step("Заполняем форму регистрации и жмем продолжить")
     public RegisterPage registerNewUser(String genderType, String firstName, String lastName, String email, String password, String confirmPassword){
 
         registerHeader.should(appear);
@@ -52,6 +54,7 @@ public class RegisterPage extends HelperBase {
         return new RegisterPage(wdm);
     }
 
+    @Step("Жмем продолжить после успешной регистрации")
     public void clickOnContinueAfterRegister(){
         continueButton.click();
         registerHeader.should(disappear);
